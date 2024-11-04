@@ -1,6 +1,6 @@
 import time
 
-class AddDelay:
+class add_delay_node:
     """Node that adds a configurable delay between operations"""
     
     @classmethod
@@ -28,9 +28,9 @@ class AddDelay:
         return (image,)
 
 NODE_CLASS_MAPPINGS = {
-    "Add Delay": AddDelay
+    "Add Delay": add_delay_node
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "Add Delay": "Add Delay"
+    "add_delay_node": "Add Delay"
 } 
