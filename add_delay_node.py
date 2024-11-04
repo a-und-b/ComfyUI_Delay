@@ -32,5 +32,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "add_delay_node": "Add Delay"
+    "Add Delay": "Add Delay"
 } 
