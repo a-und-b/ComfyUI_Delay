@@ -1,5 +1,11 @@
 import time
 
+class AnyType(str):
+    def __ne__(self, __value: object) -> bool:
+        return False
+
+any_type = AnyType("*")
+
 class add_delay_node:
     """Node that adds a configurable delay between operations"""
     
@@ -7,7 +13,7 @@ class add_delay_node:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "input": ("*",),
+                "input": (any_type, {"defaultInput": True}),
                 "delay_seconds": ("FLOAT", {
                     "default": 1.0,
                     "min": 0.0,
@@ -16,8 +22,8 @@ class add_delay_node:
             },
         }
 
-    RETURN_TYPES = ("*",)
-    RETURN_NAMES = ("input",)
+    RETURN_TYPES = (any_type,)
+    RETURN_NAMES = ("output",)
     FUNCTION = "add_delay"
     CATEGORY = "utils"
     
