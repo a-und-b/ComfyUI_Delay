@@ -1,0 +1,14 @@
+[project]
+name = "delay"
+description = ""
+version = "1.0.0"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/a-und-b/ComfyUI_Delay"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "a-und-b"
+DisplayName = "ComfyUI_Delay"
+Icon = ""
