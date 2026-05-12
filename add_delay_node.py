@@ -35,9 +35,9 @@ class add_delay_node:
         progress_bar = comfy.utils.ProgressBar(delay_seconds)
         longest_sleep = 1.0
 
-        start_time = time.time()
+        start_time = time.monotonic()
         while True:
-            current_elapsed = time.time() - start_time
+            current_elapsed = time.monotonic() - start_time
 
             progress_bar.update_absolute(min(current_elapsed, delay_seconds))
 
