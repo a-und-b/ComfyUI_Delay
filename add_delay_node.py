@@ -9,7 +9,7 @@ any_type = AnyType("*")
 
 class add_delay_node:
     """Node that adds a configurable delay between operations"""
-    
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -27,28 +27,28 @@ class add_delay_node:
     RETURN_NAMES = ("output",)
     FUNCTION = "add_delay"
     CATEGORY = "utils"
-    
+
     def add_delay(self, input, delay_seconds):
         delay_text = f"{delay_seconds:.1f} second{'s' if delay_seconds != 1 else ''}"
         print(f"[Delay Node] Starting delay of {delay_text}")
-        
+
         progress_bar = comfy.utils.ProgressBar(delay_seconds)
         longest_sleep = 1.0
 
         start_time = time.time()
         while True:
             current_elapsed = time.time() - start_time
-            
+
             progress_bar.update_absolute(min(current_elapsed, delay_seconds))
 
             if current_elapsed >= delay_seconds:
-                #time is up
+                # time is up
                 break
-            
+
             # Sleep as long as allowed, or the remaining fraction if we are at the end
             time_to_sleep = min(longest_sleep, delay_seconds - current_elapsed)
             time.sleep(time_to_sleep)
-        
+
         print(f"[Delay Node] Delay of {delay_text} completed")
         return (input,)
 
@@ -58,4 +58,4 @@ NODE_CLASS_MAPPINGS = {
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "Add Delay": "Add Delay"
-} 
+}
