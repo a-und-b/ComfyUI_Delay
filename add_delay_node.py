@@ -33,7 +33,7 @@ class add_delay_node:
         print(f"[Delay Node] Starting delay of {delay_text}")
 
         progress_bar = comfy.utils.ProgressBar(delay_seconds)
-        longest_sleep = 1.0
+        update_interval_seconds = 1.0
 
         start_time = time.monotonic()
         while True:
@@ -45,8 +45,8 @@ class add_delay_node:
                 # time is up
                 break
 
-            # Sleep as long as allowed, or the remaining fraction if we are at the end
-            time_to_sleep = min(longest_sleep, delay_seconds - current_elapsed)
+            # Sleep one entire update interval, or the remaining fraction if we are at the end
+            time_to_sleep = min(update_interval_seconds, delay_seconds - current_elapsed)
             time.sleep(time_to_sleep)
 
         print(f"[Delay Node] Delay of {delay_text} completed")
