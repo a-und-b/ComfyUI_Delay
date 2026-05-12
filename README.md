@@ -2,6 +2,8 @@
 
 This custom node for ComfyUI provides a simple way to add configurable delays between node operations, which can be useful for debugging, timing control, or managing resource usage in workflows.
 
+<img width="2242" height="964" alt="image" src="https://github.com/user-attachments/assets/79f0cefa-a587-4b08-8999-be2a7cee6c25" />
+
 ## Features
 
 - Adds configurable delays between node operations
