@@ -1,7 +1,7 @@
 [project]
 name = "delay"
 description = "Simple custom node for ComfyUI to artificially delay a workflow at any point."
-version = "1.1.0"
+version = "1.2.0"
 license = {file = "LICENSE"}
 
 [project.urls]
