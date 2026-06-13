@@ -14,7 +14,7 @@ class add_delay_node:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "input": (any_type, {"defaultInput": True}),
+                "input": (any_type, {}),
                 "delay_seconds": ("FLOAT", {
                     "default": 1.0,
                     "min": 0.0,
