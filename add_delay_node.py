@@ -18,7 +18,8 @@ class add_delay_node:
                 "delay_seconds": ("FLOAT", {
                     "default": 1.0,
                     "min": 0.0,
-                    "step": 0.1
+                    "step": 0.1,
+                    "tooltip": "How long to pause before passing the input through",
                 }),
             },
         }
@@ -27,6 +28,9 @@ class add_delay_node:
     RETURN_NAMES = ("output",)
     FUNCTION = "add_delay"
     CATEGORY = "utils"
+    DESCRIPTION = (
+        "Passthrough any data with a timed delay, reporting progress while waiting."
+    )
 
     def add_delay(self, input, delay_seconds):
         delay_text = f"{delay_seconds:.1f} second{'s' if delay_seconds != 1 else ''}"
