@@ -1,60 +1,74 @@
-# ComfyUI-Delay
+<div align="center">
 
-This custom node for ComfyUI provides a simple way to add configurable delays between node operations, which can be useful for debugging, timing control, or managing resource usage in workflows.
+# AB Delay: pause a workflow for ComfyUI
 
-![Example workflow](example_workflows/delay-preview.png)
+**Wait a set number of seconds at any point of a graph, then pass the value on unchanged.**
+
+<br />
+
+[![Star this repo](https://img.shields.io/github/stars/a-und-b/ComfyUI_Delay?style=for-the-badge&logo=github&label=Star&color=yellow)](https://github.com/a-und-b/ComfyUI_Delay/stargazers)
+&nbsp;
+[![Comfy Registry installs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.comfy.org%2Fnodes%2Fdelay&query=%24.downloads&label=registry%20installs&style=for-the-badge&color=5b6cff)](https://registry.comfy.org/nodes/delay)
+&nbsp;
+[![Comfy Registry version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.comfy.org%2Fnodes%2Fdelay&query=%24.latest_version.version&label=version&prefix=v&style=for-the-badge&color=333)](https://registry.comfy.org/nodes/delay)
+&nbsp;
+[![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f?style=for-the-badge)](LICENSE)
+
+<br />
+
+![A text passes through AB Delay, which waits two seconds, into Preview as Text](example_workflows/ab-delay-pause-between-nodes-preview.png)
+
+---
+
+Some graphs need a pause: a rate-limited API between two calls, a file another tool writes first, a GPU that should cool down between batches. AB Delay waits the seconds you set, shows a progress bar while it does, and hands its input on untouched.
+
+[Install](#install) · [Example workflow](#example-workflow) · [Usage](#usage) · [Contributing](#contributing)
+
+</div>
+
+---
 
 ## Features
 
-- Adds configurable delays between node operations
-- Works with any type of input/output
-- Visual progress bar in the ComfyUI UI showing delay progress
-- Responds to ComfyUI's Stop button while delaying
-- Provides console feedback about delay duration
-- Easy to integrate into existing ComfyUI workflows
-- No additional dependencies
+| You want | You use |
+|----------|---------|
+| A pause between two nodes | **AB Delay** between them, `delay_seconds` set |
+| Any value to go through unchanged | connect any type to `input` |
+| To see how long is left | the progress bar on the node |
+| To cancel a long pause | ComfyUI's **Stop** button |
 
-## Requirements
+No extra dependencies, no network calls.
 
-- ComfyUI
-- Python 3.10+
+## Install
 
-## Installation
+**ComfyUI Manager:** search for **AB Delay**, install, restart ComfyUI.
 
-### Via ComfyUI-Manager (recommended)
+**comfy-cli:**
 
-Search for `ComfyUI_Delay` in [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager) and click Install, then restart ComfyUI.
+```bash
+comfy node install delay
+```
 
-### Manual installation
+**Manually:**
 
-1. Navigate to your ComfyUI custom nodes folder:
-   ```
-   cd /path/to/ComfyUI/custom_nodes/
-   ```
-2. Clone this repository:
-   ```
-   git clone https://github.com/a-und-b/ComfyUI_Delay.git
-   ```
-3. Restart ComfyUI
+```bash
+cd ComfyUI/custom_nodes/
+git clone https://github.com/a-und-b/ComfyUI_Delay.git
+```
+
+Restart ComfyUI. The node appears under **AB/Utils**; search for `AB Delay` or `sleep`.
 
 ## Example workflow
 
-Load [`example_workflows/delay-example.json`](example_workflows/delay-example.json) into ComfyUI to see the **Add Delay** node. Preview: [`example_workflows/delay-preview.png`](example_workflows/delay-preview.png).
+[`ab-delay-pause-between-nodes.json`](example_workflows/ab-delay-pause-between-nodes.json): a text goes through **AB Delay** (2 seconds) into **Preview as Text**. Drag the file onto the canvas, or open it in ComfyUI under Workflow → Browse Templates, under the pack's name.
 
 ## Usage
 
-After installation, you'll find a new node called "Add Delay" in the utils menu.
+1. Put **AB Delay** where the pause belongs and connect any output to its `input`.
+2. Set `delay_seconds`.
+3. Connect `output` to the next node; it gets the same value after the pause.
 
-1. Add the node anywhere in your workflow where you want to introduce a delay
-2. Set the desired delay duration in seconds
-3. Connect any input to the node. It will pass through unchanged after the specified delay
-4. While the node is running, the ComfyUI UI shows a progress bar for the delay
-5. Click ComfyUI's **Stop** button at any time to cancel an in-progress delay
-6. The console will show feedback when the delay starts and completes
-
-## Console Output
-
-The node provides feedback in the console:
+The console logs the start and end of each pause:
 
 ```
 [Delay Node] Starting delay of 1.0 second
@@ -63,12 +77,22 @@ The node provides feedback in the console:
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a pull request.
+Bug reports and pull requests are welcome. Open an [issue](https://github.com/a-und-b/ComfyUI_Delay/issues) first for larger changes; [`CONTRIBUTING.md`](CONTRIBUTING.md) has the three steps.
 
-## Acknowledgements
-
-- Progress bar and cancellation support contributed by [@obrofg](https://github.com/obrofg) ([#1](https://github.com/a-und-b/ComfyUI_Delay/pull/1))
+Progress bar and cancellation support were contributed by [@obrofg](https://github.com/obrofg) ([#1](https://github.com/a-und-b/ComfyUI_Delay/pull/1)).
 
 ## License
 
-This project is open-sourced under the MIT License - see the LICENSE file for details.
+[MIT](LICENSE)
+
+---
+
+<div align="center">
+
+Built by [Holger Will](https://github.com/a-und-b) at [anders & besser](https://andersundbesser.de)
+
+<br />
+
+[![Star this repo](https://img.shields.io/github/stars/a-und-b/ComfyUI_Delay?style=for-the-badge&logo=github&label=Star&color=yellow)](https://github.com/a-und-b/ComfyUI_Delay/stargazers)
+
+</div>

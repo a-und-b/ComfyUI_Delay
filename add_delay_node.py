@@ -14,7 +14,7 @@ class add_delay_node:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "input": (any_type, {}),
+                "input": (any_type, {"tooltip": "Any value; passed through unchanged after the delay"}),
                 "delay_seconds": ("FLOAT", {
                     "default": 1.0,
                     "min": 0.0,
@@ -27,7 +27,8 @@ class add_delay_node:
     RETURN_TYPES = (any_type,)
     RETURN_NAMES = ("output",)
     FUNCTION = "add_delay"
-    CATEGORY = "utils"
+    CATEGORY = "AB/Utils"
+    SEARCH_ALIASES = ["Add Delay", "sleep", "wait", "pause"]
     DESCRIPTION = (
         "Passthrough any data with a timed delay, reporting progress while waiting."
     )
@@ -61,5 +62,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "Add Delay": "Add Delay"
+    "Add Delay": "AB Delay"
 }

@@ -1,7 +1,7 @@
 [project]
 name = "delay"
-description = "Simple custom node for ComfyUI to artificially delay a workflow at any point."
-version = "1.2.2"
+description = "Pause a ComfyUI workflow at any point: AB Delay waits a set number of seconds with a progress bar, then passes any value on unchanged. No dependencies."
+version = "1.3.0"
 license = {file = "LICENSE"}
 
 [project.urls]
@@ -10,5 +10,5 @@ Repository = "https://github.com/a-und-b/ComfyUI_Delay"
 
 [tool.comfy]
 PublisherId = "a-und-b"
-DisplayName = "ComfyUI_Delay"
+DisplayName = "AB Delay"
 Icon = ""
